@@ -27,4 +27,4 @@ You can also modify the GPT-3 configuration by changing the model_config diction
 
 **Contributing**
 
-If you find any issues or have suggestions for improvements, please feel free to create an issue or submit a pull request.
+If you find any issues or have suggestions for improvements, please feel free to edit the code for your own use.
