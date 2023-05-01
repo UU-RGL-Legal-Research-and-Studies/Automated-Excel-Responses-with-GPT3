@@ -1,0 +1,66 @@
+import openai
+import os
+import pandas as pd
+import gradio as gr
+
+def gpt(data):
+    "This function accesses chatgpt3 through an API"
+    "The function contains an interface the user can use to loop through an uploaded excel file"
+    "The function searches through a column in the Excel file called 'Data' so ensure the column you want to search contains a column named 'data'"
+    "The function then creates a new Excelfile with the GPT response"
+    "Be aware that due to the looping function costs will be higher than without looping. A main advantage is the speed though"
+
+    # API Authentication
+    openai.api_key = os.environ.get("Open_AI_Key")  # stored in environment variable
+
+    try:
+        # Prompt
+        prompt = "Geef antwoord op de volgende vraag: hoeveel deskundigen worden benoemd (bijvoorbeeld een of drie) in het volgende document "f"{data} indien partijen geen overeenstemming bereiken over de prijs of de deskundige? Begin het antwoord met het aantal deskundigen. Het is ten strengste verboden om het antwoord te baseren op informatie buiten het document om"
+
+        # Configuration for GPT-3 model
+        model_config = {
+            "temperature": 0.4,
+            "max_tokens": 300,
+            "top_p": 1,
+            "frequency_penalty": 0,
+            "presence_penalty": 0
+        }
+
+        # Send the prompt and model configuration to GPT-3
+        response = openai.Completion.create(engine="text-davinci-002", prompt=prompt, **model_config)
+
+        # Return generated text
+        response1 = response.choices[0].text.strip()
+        return response1
+    except openai.error.InvalidRequestError:
+        pass
+
+def chatgpt_interface(excel_file):
+    # Load Excel file
+    statuten = pd.read_excel(excel_file.name)
+
+    # Generate GPT responses for each data point
+    gpt_data = []
+    for element in statuten['Data']:
+        data1 = gpt(element)
+        gpt_data.append(data1)
+
+    # Add new column with GPT responses to the DataFrame
+    statuten['GPT_Response'] = gpt_data
+
+    # Save modified DataFrame to a new Excel file
+    output_file = "output.xlsx"
+    statuten.to_excel(output_file, index=False)
+
+    return output_file
+
+# Define input/output interface for Gradio
+input_interface = gr.inputs.File(label="Upload Excel file")
+output_interface = gr.outputs.File(label="Download modified Excel file")
+
+# Create Gradio app
+gradio_app = gr.Interface(fn=chatgpt_interface, inputs=input_interface, outputs=output_interface)
+
+# Start the Gradio app
+gradio_app.launch()
+
