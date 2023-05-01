@@ -32,7 +32,7 @@ def gpt(data):
         # Return generated text
         response1 = response.choices[0].text.strip()
         return response1
-    except openai.error.InvalidRequestError:
+    except openai.error.InvalidRequestError: #to ensure above maximum token length GPT3 API the code still functions
         pass
 
 def chatgpt_interface(excel_file):
