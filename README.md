@@ -6,14 +6,12 @@ This repository contains code for an Excel-GPT-3 interface that generates automa
 
 To use this tool, you need to have Python 3 installed on your computer. You also need to install the required Python packages. You can do this by running the following command: 
 
-Copy code
 pip install -r requirements.txt
 
 **Usage**
 
 To use the tool, simply run the following command:
 
-Copy code
 python main.py
 
 This will start the Gradio interface, where you can upload an Excel file containing prompts and generate automated responses using GPT-3. The resulting responses are added as a new column in the Excel file and saved as a new output file.
