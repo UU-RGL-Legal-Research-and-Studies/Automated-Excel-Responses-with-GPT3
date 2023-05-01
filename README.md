@@ -6,23 +6,24 @@ You can use the repository in conjunction with the 'Search-Buddy' repository tha
 
 **Installation**
 
-To use this tool, you need to have Python 3 installed on your computer. You also need to install the required Python packages. You can do this by running the following command: 
+To use this tool, you need to have Python 3 installed on your computer. You also need to install the required Python packages. You can do this by running the following commands in your terminal: 
 
-pip install -r requirements.txt
+pip install pandas
+pip install os
+pip install gradio
+pip install openai
 
 **Usage**
 
-To use the tool, simply run the following command:
+To use the tool, simply copy the code available in the repository and run the python script.
 
-python main.py
-
-This will start the Gradio interface, where you can upload an Excel file containing prompts and generate automated responses using GPT-3. The resulting responses are added as a new column in the Excel file and saved as a new output file.
+This will start the Gradio interface, where you can upload an Excel file containing prompts and generate automated responses using GPT-3. The resulting responses are added as a new column in the Excel file and saved as a new output file. 
 
 **Configuration**
 
 To configure the GPT-3 API, you need to set your OpenAI API key as an environment variable called Open_AI_Key. You can get an API key by signing up for OpenAI's GPT-3 API.
 
-You can also modify the GPT-3 configuration by changing the model_config dictionary in the gpt() function. This dictionary contains various parameters that control the behavior of the GPT-3 model, such as the temperature, maximum number of tokens, and frequency penalty.
+You can also modify the GPT-3 configuration by changing the model_config dictionary in the gpt() function, including the 'prompt' (instructions for the GPT-3 model). The function also contains various parameters that control the behavior of the GPT-3 model, such as the temperature, maximum number of tokens, and frequency penalty.
 
 **Contributing**
 
