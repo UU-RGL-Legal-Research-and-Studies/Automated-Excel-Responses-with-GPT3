@@ -1,8 +1,8 @@
 # Automated-Excel-Responses-with-GPT3
 
-This repository contains code for an Excel-GPT-3 interface that generates automated responses for prompts using OpenAI's GPT-3 API. It uses Gradio for input/output interface, making it easy to use even for non-technical users. This tool is useful for generating responses for a large number of prompts in an Excel file. 
+This repository contains code for an Excel-GPT-3 interface that generates automated responses for prompts using OpenAI's GPT-3 API. It uses Gradio for input/output interface, making it easy to use even for non-technical users. This tool is useful for generating responses for a large number of prompts in an Excel file. Please be aware that costs are incurred when using the GPT-3 API and an individual API-key for OpenAI is required.
 
-You can use the repository in conjunction with the 'Search-Buddy' repository. The Search-Buddy repository enables to extract data from PDFs into an Excel. Since GPT3 contains a maximum length of about 4000 tokens, Search Buddy can help by extracting the already relevant text from the PDF into an Excel. This excel can in turn be read by chatgpt through this repository (i.e. 'Automated-Excel-Responses-with-GPT3').
+You can use the repository in conjunction with the 'Search-Buddy' repository that is also available on our Githubpage. The Search-Buddy repository enables to extract data from PDFs into an Excel. Since GPT3 contains a maximum length of about 4000 tokens, Search Buddy can help by extracting the already relevant text from the PDF into an Excel. This excel can in turn be read by chatgpt through this repository (i.e. 'Automated-Excel-Responses-with-GPT3').
 
 **Installation**
 
